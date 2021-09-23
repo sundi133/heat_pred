@@ -265,7 +265,7 @@ cai.setup(config="/Users/jyotirmoysundi/Downloads/distml.json", project_name="te
 
 
 
-# In[25]:
+# In[29]:
 
 
 import lightgbm as lgb
@@ -331,14 +331,14 @@ plt.savefig('feature_importance_qr_0.95.png')
 cai.saveplot("feature_importance_qr_0.95.png")
 
 
-# In[26]:
+# In[30]:
 
 
 model_cb.save_model("model_cb")
 model.booster_.save_model('lgbmmodel')
 
 
-# In[28]:
+# In[31]:
 
 
 cai.save_model("model_cb")
