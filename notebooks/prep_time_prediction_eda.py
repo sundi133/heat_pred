@@ -248,7 +248,7 @@ get_ipython().system(' pip install /Users/jyotirmoysundi/git/distml_logger/dist/
 #/Users/jyotirmoysundi/git/distml_logger/dist/chaya_ai-0.0.1.tar.gz
 
 
-# In[9]:
+# In[20]:
 
 
 
@@ -256,19 +256,16 @@ from chaya_ai.chaya_ai import tracker
 
 cai = tracker() # increase collaboration and precise feedback
 
-cai.setup(config="/Users/jyotirmoysundi/Downloads/distml.json", project_name="your_p1",           track={"start_tag":{"keywords":"start|train"},"end_tag":{"metrics":"rmse|mae"}})
+cai.setup(config="/Users/jyotirmoysundi/Downloads/distml.json", project_name="temp_pred",           track={"start_tag":{"keywords":"start|train"},"end_tag":{"metrics":"rmse|mae"}})
 
 
-# In[10]:
+# In[ ]:
 
 
-import inspect
-from sklearn import tree
-inspect.getsourcelines(cai.save_model)
-                       
 
 
-# In[19]:
+
+# In[25]:
 
 
 import lightgbm as lgb
@@ -312,7 +309,7 @@ model_cb.fit(xtr, ytr, cat_features = categorical_var, plot=False)
 
 y_pred_catboost = model_cb.predict(xts)
 
-y_pred = (0.8*y_pred_lgbm + 0.1*y_pred_catboost)
+y_pred = (0.1*y_pred_lgbm + 0.9*y_pred_catboost)
 
 # model_rf = RandomForestRegressor(n_estimators=1000,max_depth=4, 
 #                           random_state=42,
@@ -334,22 +331,17 @@ plt.savefig('feature_importance_qr_0.95.png')
 cai.saveplot("feature_importance_qr_0.95.png")
 
 
-# In[18]:
+# In[26]:
 
 
 model_cb.save_model("model_cb")
-cai.save_model("model_cb")
-
-
-# In[14]:
-
-
 model.booster_.save_model('lgbmmodel')
 
 
-# In[17]:
+# In[28]:
 
 
+cai.save_model("model_cb")
 cai.save_model("lgbmmodel")
 
 
